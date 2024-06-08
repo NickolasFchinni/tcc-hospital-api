@@ -1,5 +1,5 @@
 import { db } from "../db.js";
-import bcrypt from 'bcryptjs';
+import bcrypt from '../node_modules/bcryptjs';
 
 export const getUser = (_, res) => {
   const q = `SELECT 
