@@ -16,7 +16,7 @@ const app = express();
 app.use(cors({
   origin: 'http://localhost:3000',
   methods: ['GET', 'POST'],
-  allowedHeaders: ['Content-Type', 'Authorization', 'Access-Control-Allow-Origin'], // Adicione 'Access-Control-Allow-Origin' aqui
+  allowedHeaders: ['Content-Type', 'Authorization', 'Access-Control-Allow-Origin', 'access-control-allow-origin'], // Adicione 'Access-Control-Allow-Origin' aqui
   credentials: true
 }));
 
