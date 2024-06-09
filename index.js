@@ -14,7 +14,7 @@ import cors from "cors";
 
 const app = express();
 app.use(cors({
-  origin: 'https://tcc-7pruo53oq-nickolas-projects-13fccc25.vercel.app',
+  origin: 'https://tcc-7pruo53oq-nickolas-projects-13fccc25.vercel.app/',
   methods: ['GET', 'POST', 'DELETE', 'PUT'],
   allowedHeaders: ['Content-Type', 'Authorization', 'Access-Control-Allow-Origin', 'access-control-allow-origin'], // Adicione 'Access-Control-Allow-Origin' aqui
   credentials: true
