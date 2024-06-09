@@ -10,7 +10,7 @@ import especialidadeRoutes from "./routes/especialidade.js";
 import usersRoutes from "./routes/users.js";
 import avisoRoutes from "./routes/aviso.js";
 import avisoRoutes2 from "./routes/cAviso.js";
-const cors = require('cors');
+import cors from "cors";
 
 const app = express();
 app.use(cors({
