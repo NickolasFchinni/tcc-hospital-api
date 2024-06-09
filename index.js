@@ -29,4 +29,4 @@ app.use("/material", materialRoutes);
 app.use("/especialidade", especialidadeRoutes);
 app.use("/user", usersRoutes);
 
-app.listen(8800);
+app.listen(process.env.PORT || 8800);
