@@ -14,7 +14,7 @@ import cors from "cors";
 
 const app = express();
 app.use(cors({
-  origin: 'http://localhost:3000/home', // ou o domínio do seu frontend
+  origin: 'http://localhost:3000', // ou o domínio do seu frontend
   methods: ['GET', 'POST'], // Métodos permitidos
   allowedHeaders: ['Content-Type', 'Authorization'], // Cabeçalhos permitidos
   credentials: true // Permitir credenciais (por exemplo, cookies)
