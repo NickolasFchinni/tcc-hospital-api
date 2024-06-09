@@ -13,7 +13,12 @@ import avisoRoutes2 from "./routes/cAviso.js";
 import cors from "cors";
 
 const app = express();
-app.use(cors());
+app.use(cors({
+  origin: 'http://localhost:3000', // ou o domínio do seu frontend
+  methods: ['GET', 'POST'], // Métodos permitidos
+  allowedHeaders: ['Content-Type', 'Authorization'], // Cabeçalhos permitidos
+  credentials: true // Permitir credenciais (por exemplo, cookies)
+}));
 
 const corsOptions = {
   origin: '*', // ou 'http://localhost:3000' para um único domínio
