@@ -14,31 +14,25 @@ import cors from "cors";
 
 const app = express();
 app.use(cors({
-  origin: 'http://localhost:3000', // ou o domínio do seu frontend
+  origin: 'http://localhost:3000/home', // ou o domínio do seu frontend
   methods: ['GET', 'POST'], // Métodos permitidos
   allowedHeaders: ['Content-Type', 'Authorization'], // Cabeçalhos permitidos
   credentials: true // Permitir credenciais (por exemplo, cookies)
 }));
 
-const corsOptions = {
-  origin: '*', // ou 'http://localhost:3000' para um único domínio
-  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'], // Métodos permitidos
-  allowedHeaders: ['Content-Type', 'Authorization'], // Cabeçalhos permitidos
-  credentials: true // Permitir credenciais (por exemplo, cookies)
-};
 
 app.use(express.json());
 
-app.use("/auth",cors(corsOptions), authRoutes);
-app.use("/aviso",cors(corsOptions), avisoRoutes);
-app.use("/aviso2",cors(corsOptions), avisoRoutes2);
-app.use("/patient",cors(corsOptions), userRoutes);
-app.use("/sala",cors(corsOptions), salaRoutes);
-app.use("/centro",cors(corsOptions), roomRoutes);
-app.use("/worker",cors(corsOptions), workerRoutes);
-app.use("/procedimento",cors(corsOptions), procedimentoRoutes);
-app.use("/material",cors(corsOptions), materialRoutes);
-app.use("/especialidade",cors(corsOptions), especialidadeRoutes);
-app.use("/user",cors(corsOptions), usersRoutes);
+app.use("/auth", authRoutes);
+app.use("/aviso", avisoRoutes);
+app.use("/aviso2", avisoRoutes2);
+app.use("/patient", userRoutes);
+app.use("/sala", salaRoutes);
+app.use("/centro", roomRoutes);
+app.use("/worker", workerRoutes);
+app.use("/procedimento", procedimentoRoutes);
+app.use("/material", materialRoutes);
+app.use("/especialidade", especialidadeRoutes);
+app.use("/user", usersRoutes);
 
 app.listen(process.env.PORT || 8800);
