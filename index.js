@@ -13,12 +13,7 @@ import avisoRoutes2 from "./routes/cAviso.js";
 import cors from "cors";
 
 const app = express();
-app.use(cors({
-  origin: 'http://localhost:3000',
-  methods: ['GET', 'POST', 'DELETE'],
-  allowedHeaders: ['Content-Type', 'Authorization', 'Access-Control-Allow-Origin', 'access-control-allow-origin'], // Adicione 'Access-Control-Allow-Origin' aqui
-  credentials: true
-}));
+app.use(cors());
 
 
 app.use(express.json());
@@ -35,4 +30,4 @@ app.use("/material", materialRoutes);
 app.use("/especialidade", especialidadeRoutes);
 app.use("/user", usersRoutes);
 
-app.listen(process.env.PORT || 8800);
+app.listen(8800);
