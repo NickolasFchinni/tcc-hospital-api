@@ -20,7 +20,6 @@ export const getUser = (_, res) => {
 };
 
 export const addUser = (req, res) => {
-  // Verifica se o email já existe
   const checkEmailQuery = "SELECT COUNT(*) AS count FROM USUARIOS WHERE ds_mail = ?";
   db.query(checkEmailQuery, [req.body.ds_mail], (err, results) => {
     if (err) {
@@ -43,7 +42,6 @@ export const addUser = (req, res) => {
         return res.status(400).json({ error: "Prestador já cadastrado para outro usuário." });
       }
 
-      // Hash da senha antes de inserir no banco de dados
       bcrypt.hash(req.body.ds_senha, 10, (err, hashedPassword) => {
         if (err) {
           console.error("Erro ao hash de senha:", err);
@@ -56,7 +54,7 @@ export const addUser = (req, res) => {
           req.body.Dt_cadastro,
           req.body.Sn_ativo,
           req.body.ds_mail,
-          hashedPassword, // Use a senha hashada
+          hashedPassword, 
         ];
 
         db.query(q, values, (err) => {
@@ -83,7 +81,6 @@ export const deleteUser = (req, res) => {
 };
 
 export const updateUser = (req, res) => {
-  // Hash da senha antes de atualizar no banco de dados (opcional: somente se a senha estiver sendo alterada)
   if (req.body.ds_senha) {
     bcrypt.hash(req.body.ds_senha, 10, (err, hashedPassword) => {
       if (err) {
@@ -94,7 +91,7 @@ export const updateUser = (req, res) => {
       updateWithHashedPassword(hashedPassword);
     });
   } else {
-    updateWithHashedPassword(null); // Atualização sem alterar a senha
+    updateWithHashedPassword(null); 
   }
 
   function updateWithHashedPassword(hashedPassword) {
@@ -106,7 +103,7 @@ export const updateUser = (req, res) => {
       req.body.Dt_cadastro,
       req.body.Sn_ativo,
       req.body.ds_mail,
-      hashedPassword, // Use a senha hashada, ou null se não estiver sendo alterada
+      hashedPassword, 
       req.params.id,
     ];
   

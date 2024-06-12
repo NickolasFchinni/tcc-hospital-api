@@ -3,10 +3,9 @@ import { addUser, deleteUser, getUsers, updateUser } from "../controllers/patien
 
 const router = express.Router()
 
-router.get("/",  getUsers) // Aplicando o middleware
-router.post("/",  addUser) // Aplicando o middleware
-router.put("/:id",  updateUser) // Aplicando o middleware
-
-router.delete("/:id",  deleteUser) // Aplicando o middleware
+router.get("/",  getUsers);
+router.post("/",  addUser);
+router.put("/:id",  updateUser); 
+router.delete("/:id",  deleteUser); 
 
 export default router;

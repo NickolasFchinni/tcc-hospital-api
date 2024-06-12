@@ -15,17 +15,17 @@ export const getUsers = (_, res) => {
 export const addUser = async (req, res) => {
   console.log("Dados recebidos para adicionar paciente:", req.body);
 
-  const { nr_cpf, nr_telefone } = req.body;
+  const { nr_cpf, nr_telefone, nr_cns } = req.body;
 
-  const checkQuery = "SELECT * FROM PACIENTE WHERE nr_cpf = ? OR nr_telefone = ?";
-  db.query(checkQuery, [nr_cpf, nr_telefone], async (checkErr, checkResult) => {
+  const checkQuery = "SELECT * FROM PACIENTE WHERE nr_cpf = ? OR nr_telefone = ? OR nr_cns = ?";
+  db.query(checkQuery, [nr_cpf, nr_telefone, nr_cns], async (checkErr, checkResult) => {
     if (checkErr) {
       console.error('Erro ao verificar paciente existente:', checkErr);
       return res.status(500).json({ error: 'Erro ao verificar paciente existente.' });
     }
 
     if (checkResult.length > 0) {
-      return res.status(400).json({ error: 'CPF ou telefone já cadastrados.' });
+      return res.status(400).json({ error: 'CPF, telefone ou CNS já cadastrados.' });
     }
 
     const insertQuery =

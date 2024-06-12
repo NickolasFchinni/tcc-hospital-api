@@ -1,7 +1,7 @@
 import { db } from "../db.js";
 
 export const getProcedimento = (req, res) => {
-  const sexo = req.query.sexo; // Aqui você captura o parâmetro de sexo do query string
+  const sexo = req.query.sexo; 
   const q = `
     SELECT DISTINCT 
       P.CO_PROCEDIMENTO,

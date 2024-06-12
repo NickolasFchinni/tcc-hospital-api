@@ -12,7 +12,7 @@ export const getAvisos = (_, res) => {
 
 export const addAviso = (req, res) => {
   const q =
-    "INSERT INTO AVISO_CIRURGIA(`id_paciente`, `tp_aviso`, `dt_cadastro`, `dt_agendamento`, `dt_tempo_previsto`, `id_prestador`, `tp_anestesia`, `sn_reserva_cti`, `sn_biopsia`, `sn_reserva_hemocomponentes`, `ds_justificativa`, `id_usuario`) VALUES(?)";
+    "INSERT INTO AVISO_CIRURGIA(`id_paciente`, `tp_aviso`, `dt_cadastro`, `dt_agendamento`, `dt_tempo_previsto`, `id_prestador`, `tp_anestesia`, `sn_reserva_cti`, `sn_biopsia`, `sn_reserva_hemocomponentes`, `ds_justificativa`, `id_usuario`, `id_sala_cirurgica`) VALUES(?)";
 
   const values = [
     req.body.id_paciente,
@@ -26,11 +26,15 @@ export const addAviso = (req, res) => {
     req.body.sn_biopsia,
     req.body.sn_reserva_hemocomponentes,
     req.body.ds_justificativa,
-    req.body.id_usuario
+    req.body.id_usuario,
+    req.body.id_sala_cirurgica
   ];
 
-  db.query(q, [values], (err) => {
+  db.query(q, [values], (err, result) => {
     if (err) return res.json(err);
+
+    const insertedId = result.insertId;
+    return res.status(200).json({ id_aviso_cirurgia: insertedId });
 
     return res.status(200).json("Aviso criado com sucesso.");
   });

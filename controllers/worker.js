@@ -20,17 +20,17 @@ export const getMedicoWorkers = (_, res) => {
 
 export const addWorker = (req, res) => {
 
-  const { nr_cpf } = req.body;
+  const { nr_cpf, ds_codigo_conselho } = req.body;
 
-  const checkQuery = "SELECT * FROM PRESTADOR WHERE nr_cpf = ?";
-  db.query(checkQuery, [nr_cpf], async (checkErr, checkResult) => {
+  const checkQuery = "SELECT * FROM PRESTADOR WHERE nr_cpf = ? OR ds_codigo_conselho = ?";
+  db.query(checkQuery, [nr_cpf, ds_codigo_conselho], async (checkErr, checkResult) => {
     if (checkErr) {
       console.error('Erro ao verificar prestador existente:', checkErr);
       return res.status(500).json({ error: 'Erro ao verificar prestador existente.' });
     }
 
     if (checkResult.length > 0) {
-      return res.status(400).json({ error: 'CPF já cadastrado.' });
+      return res.status(400).json({ error: 'CPF ou Código de Conselho já cadastrado.' });
     }
 
   const q =
@@ -39,7 +39,7 @@ export const addWorker = (req, res) => {
   const values = [
     req.body.nm_prestador,
     req.body.ds_tip_presta,
-    req.body.ds_codigo_conselho,
+    req.body.ds_codigo_conselho || null,
     req.body.ds_cep,
     req.body.nr_cpf,
     req.body.id_especialidade,

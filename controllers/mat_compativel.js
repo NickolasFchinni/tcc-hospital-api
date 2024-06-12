@@ -1,7 +1,7 @@
 import { db } from "../db.js";
 
 export const getCompatibleMaterials = (req, res) => {
-  const { procedureId } = req.query; // Obtém o ID do procedimento da query string
+  const { procedureId } = req.query;  
 
   const query = `
     SELECT 
