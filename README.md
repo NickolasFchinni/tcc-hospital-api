@@ -24,7 +24,7 @@ Antes de iniciar, certifique-se de ter instalado:
 
 ### 2️⃣ Clonar o repositório
 ```bash
-git clone https://github.com/seu-usuario/tcc-hospital-api.git
+git clone https://github.com/NickolasFchinni/tcc-hospital-api.git
 cd tcc-hospital-api
 ```
 
